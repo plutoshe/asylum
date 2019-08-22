@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
-    [SerializeField] private float m_walkSpeed;
-    [SerializeField] private float m_sensitivity;
-    [SerializeField] private float m_smoothing;
+    [SerializeField] private float m_walkSpeed = 1.4f;
+    [SerializeField] private float m_sensitivity = 3f;
+    [SerializeField] private float m_smoothing = 1f;
     private Vector2 m_mousePos;
     private Vector2 m_smoothV;
     private Transform m_mainCamera;
