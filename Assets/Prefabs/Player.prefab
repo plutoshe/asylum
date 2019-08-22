@@ -1,5 +1,63 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1618951689
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1618951690}
+  - component: {fileID: 1618951692}
+  - component: {fileID: 1618951691}
+  m_Layer: 0
+  m_Name: InteractingCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1618951690
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618951689}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4884648179793469837}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &1618951692
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618951689}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.11662431
+  m_Height: 0.45373595
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0.23341298}
+--- !u!114 &1618951691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618951689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59ce03d04bdecf14182fc00fb83bcf59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4884648179087635719
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,7 +154,7 @@ GameObject:
   - component: {fileID: 4884648179793469838}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,6 +171,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4884648179087635736}
+  - {fileID: 1618951690}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -128,9 +187,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c8a0c1b2b6991d4380717bc357a3e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 1.4
-  sensitivity: 3
-  smoothing: 1
+  m_walkSpeed: 3
+  m_sensitivity: 3
+  m_smoothing: 1
 --- !u!54 &4884648179793469838
 Rigidbody:
   m_ObjectHideFlags: 0
