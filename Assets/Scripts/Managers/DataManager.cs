@@ -1,18 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Xml;
 
 public class DataManager : Singleton<DataManager>
 {
+    private DialogManager dialog;
+
     // Start is called before the first frame update
-    void Start()
+    DataManager()
     {
-        
+        dialog = new DialogManager();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        dialog.Load("Assets/Resources/Data/dialog_test.xml");
     }
+
+    private void Update()
+    {
+    }
+
 }
