@@ -1,0 +1,26 @@
+<!-- ensure selection is the end tag of the collection -->
+<flow>
+  <collction id="1">
+    <dialog text="collection1_sentence1"/>
+    <dialog text="collection1_sentence2"/>
+    <selection>
+        <item text="choose 2" id="2"/>
+        <item text="choose 3" id="3"/>
+        <!-- <item text="choose 3" id="3"/> -->
+    </selection>
+    <dialog text="collection1_sentence3"/>
+  </collction>
+
+  <collction id="2">
+    <dialog text="collection2_sentence1"/>
+    <dialog text="collection2_sentence2"/>
+    <selection>
+        <item text="choose 1" id="1"/>
+        <item text="choose 3" id="3"/>
+    </selection>
+  </collction>
+  <collction id="3">
+    <dialog text="collection3_sentence1"/>
+    <dialog text="collection3_sentence2"/>
+  </collction>
+</flow>
