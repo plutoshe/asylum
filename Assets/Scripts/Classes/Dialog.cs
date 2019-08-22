@@ -46,13 +46,7 @@ public class DialogCollection
     }
 }
 
-public interface DialogInterface
-{
-    int GetPlayerNextDialog(out DialogDetail dialog, out SelectionDetail selection);
-    void UpdatePlayerSelection(int collectionID);
-}
-
-public class DialogManager : DialogInterface
+public class DialogManager 
 {
     private Dictionary<int, DialogCollection> m_dialogCollections;
     private int m_currentCollectionID = -1;
@@ -106,7 +100,7 @@ public class DialogManager : DialogInterface
         }
     }
 
-    public int GetPlayerNextDialog(out DialogDetail dialog, out SelectionDetail selection)
+    public int GetCollection(out DialogDetail dialog, out SelectionDetail selection)
     {
         dialog = null;
         selection = null;
