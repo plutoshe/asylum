@@ -100,7 +100,7 @@ public class DialogManager
         }
     }
 
-    public int GetCollection(out DialogDetail dialog, out SelectionDetail selection)
+    public int GetNextDialog(out DialogDetail dialog, out SelectionDetail selection)
     {
         dialog = null;
         selection = null;
@@ -122,7 +122,7 @@ public class DialogManager
         }
         return -1;
     }
-    public void UpdatePlayerSelection(int collectionID)
+    public void GetCollection(int collectionID)
     {
         if (m_currentCollectionID != collectionID)
         {
