@@ -10,11 +10,13 @@ public class MovementController : MonoBehaviour
     private Vector2 m_mousePos;
     private Vector2 m_smoothV;
     private Transform m_mainCamera;
+    private Rigidbody m_rigidBody;
     
 
     private void Start()
     {
         m_mainCamera = Camera.main.transform;
+        m_rigidBody = gameObject.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
