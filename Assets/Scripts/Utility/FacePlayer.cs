@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class FacePlayer : MonoBehaviour
 {
-    private GameObject player;
+    private GameObject m_player;
 
     void Start()
     {
-        player = GameObject.Find("Player");
+        m_player = GameObject.Find("Player");
     }
         
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.LookAt(player.transform);
+        gameObject.transform.LookAt(m_player.transform);
     }
 }
