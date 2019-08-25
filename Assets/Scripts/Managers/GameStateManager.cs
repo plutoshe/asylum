@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameStateManager : Singleton<GameStateManager>
 {
     private bool m_isPaused = false;
-
+    
     public void PauseGame()
     {
         m_isPaused = true;
@@ -23,7 +23,9 @@ public class GameStateManager : Singleton<GameStateManager>
 
     public void ChangeIdentity()
     {
+        PauseGame();
         Debug.Log("[GameStateManager] On Mirror, Change Identity");
+        GuiManager.Instance.IdentitySelection();
     }
 
 }
