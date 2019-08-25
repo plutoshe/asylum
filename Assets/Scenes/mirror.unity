@@ -232,12 +232,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2a472210381927479dea5045861ddff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Identity01: {fileID: 553537551}
-  FemaleGlow: {fileID: 1588439650}
-  FemaleShow: {fileID: 553537554}
-  Identity02: {fileID: 1451418260}
-  MaleShow: {fileID: 1451418262}
-  GameText: {fileID: 1122480175}
+  m_Identity01: {fileID: 553537551}
+  m_FemaleGlow: {fileID: 1588439650}
+  m_FemaleShow: {fileID: 553537554}
+  m_Identity02: {fileID: 1451418260}
+  m_MaleShow: {fileID: 1451418262}
+  m_GameText: {fileID: 1122480175}
 --- !u!4 &431406602
 Transform:
   m_ObjectHideFlags: 0

@@ -1442,10 +1442,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f42bc76b80fd1f41aa25dfa45c8016c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharacterNormal: {fileID: 0}
-  CharacterScared: {fileID: 0}
-  CharacterShout: {fileID: 0}
-  Dialog: {fileID: 1546718703}
+  m_CharacterNormal: {fileID: 0}
+  m_CharacterScared: {fileID: 0}
+  m_CharacterShout: {fileID: 0}
+  m_Dialog: {fileID: 1546718703}
 --- !u!4 &1532815920
 Transform:
   m_ObjectHideFlags: 0
