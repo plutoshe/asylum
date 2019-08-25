@@ -5,16 +5,16 @@ using UnityEngine;
 
 public class DialogFunction : MonoBehaviour
 {
-    public Sprite CharacterNormal;
-    public Sprite CharacterScared;
-    public Sprite CharacterShout;
-    public Text Dialog;
+    public Sprite m_CharacterNormal;
+    public Sprite m_CharacterScared;
+    public Sprite m_CharacterShout;
+    public Text m_Dialog;
     DialogDetail m_GameDialog;
     SelectionDetail m_GameSelections;
 
     void Start()
     {
-        Dialog.text = "";
+        m_Dialog.text = "";
     }
 
     void UpdateDialog()
@@ -22,9 +22,9 @@ public class DialogFunction : MonoBehaviour
         int itemType = DataManager.Instance.dialog.GetNextDialog(out m_GameDialog, out m_GameSelections);
         switch (itemType)
         {
-            case -1: Dialog.text = ""; break;
-            case 0: Dialog.text = m_GameDialog.m_dialog; break;
-            case 1: Dialog.text = "it is a selection"; break;
+            case -1: m_Dialog.text = ""; break;
+            case 0: m_Dialog.text = m_GameDialog.m_dialog; break;
+            case 1: m_Dialog.text = "it is a selection"; break;
 
         }
     }

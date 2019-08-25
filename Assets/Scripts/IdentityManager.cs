@@ -6,21 +6,21 @@ using UnityEngine.UI;
 public class IdentityManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Image Identity01;
-    public Animator FemaleGlow;
-    public Animator FemaleShow;
-    public Image Identity02;
-    public Animator MaleShow;
+    public Image m_Identity01;
+    public Animator m_FemaleGlow;
+    public Animator m_FemaleShow;
+    public Image m_Identity02;
+    public Animator m_MaleShow;
 
-    public Text GameText;
-    private int IdentityNum;
+    public Text m_GameText;
+    private int m_IdentityNum;
     void Start()
     {
-        FemaleGlow.gameObject.SetActive(false);
+        m_FemaleGlow.gameObject.SetActive(false);
 
-        FemaleGlow.SetBool("GlowStart", false);
-        FemaleShow.SetBool("Show", false);
-        MaleShow.SetBool("Show", false);
+        m_FemaleGlow.SetBool("GlowStart", false);
+        m_FemaleShow.SetBool("Show", false);
+        m_MaleShow.SetBool("Show", false);
     }
 
     // Update is called once per frame
@@ -28,33 +28,33 @@ public class IdentityManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            FemaleGlow.gameObject.SetActive(true);
+            m_FemaleGlow.gameObject.SetActive(true);
 
-            FemaleGlow.SetBool("GlowStart", true);
-            FemaleShow.SetBool("Show", true);
-            MaleShow.SetBool("Show", false);
-            IdentityNum = 1;
+            m_FemaleGlow.SetBool("GlowStart", true);
+            m_FemaleShow.SetBool("Show", true);
+            m_MaleShow.SetBool("Show", false);
+            m_IdentityNum = 1;
 
         }
         else if(Input.GetKeyDown(KeyCode.RightArrow))
         {
-            FemaleGlow.gameObject.SetActive(false);
+            m_FemaleGlow.gameObject.SetActive(false);
 
-            FemaleGlow.SetBool("GlowStart", false);
-            FemaleShow.SetBool("Show", false);
-            MaleShow.SetBool("Show", true);
+            m_FemaleGlow.SetBool("GlowStart", false);
+            m_FemaleShow.SetBool("Show", false);
+            m_MaleShow.SetBool("Show", true);
 
-            IdentityNum = 2;
+            m_IdentityNum = 2;
         }
         else if (Input.GetKeyDown(KeyCode.Return))
         {
-            if(IdentityNum == 1)
+            if(m_IdentityNum == 1)
             {
-                GameText.text = "Female Character has been selected.";
+                m_GameText.text = "Female Character has been selected.";
             }
-            else if(IdentityNum == 2)
+            else if(m_IdentityNum == 2)
             {
-                GameText.text = "Male Character has been selected.";
+                m_GameText.text = "Male Character has been selected.";
             }
 
 
