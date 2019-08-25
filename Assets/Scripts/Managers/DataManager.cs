@@ -5,11 +5,13 @@ using System.Xml;
 
 public class DataManager : Singleton<DataManager>
 {
-    public DialogManager m_dialog;
+    private DialogManager m_dialog;
+    private PlayerStatus m_playerStatus;
 
     // Start is called before the first frame update
     DataManager()
     {
+        m_playerStatus = new PlayerStatus(1);
         m_dialog = new DialogManager();
     }
 
@@ -26,5 +28,15 @@ public class DataManager : Singleton<DataManager>
     public int GetNextDialog(out DialogDetail dialog, out SelectionDetail selection)
     {
         return m_dialog.GetNextDialog(out dialog, out selection);
+    }
+
+    public void ChangeIdentity(int identityID)
+    {
+        m_playerStatus.m_IdentityID = identityID;
+    }
+
+    public int GetIdentityID()
+    {
+        return m_playerStatus.m_IdentityID;
     }
 }

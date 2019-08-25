@@ -7,9 +7,15 @@ public class GuiManager : Singleton<GuiManager>
     public GameObject IdentityGui;
     public GameObject PlayingGui;
 
-    public void IdentitySelection()
+    public void IdentityGuiDemonstration()
     {
         PlayingGui.SetActive(false);
         IdentityGui.SetActive(true);
+    }
+
+    public void PlayingGuiDemonstration()
+    {
+        PlayingGui.SetActive(true);
+        IdentityGui.SetActive(false);
     }
 }

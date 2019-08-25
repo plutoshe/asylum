@@ -25,7 +25,14 @@ public class GameStateManager : Singleton<GameStateManager>
     {
         PauseGame();
         Debug.Log("[GameStateManager] On Mirror, Change Identity");
-        GuiManager.Instance.IdentitySelection();
+        GuiManager.Instance.IdentityGuiDemonstration();
+    }
+
+    public void BackToPlaying()
+    {
+        ResumeGame();
+        Debug.Log("[GameStateManager] On Mirror, Change Identity");
+        GuiManager.Instance.PlayingGuiDemonstration();
     }
 
 }
