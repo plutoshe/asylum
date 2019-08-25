@@ -5,7 +5,7 @@ using System.Xml;
 
 public class DataManager : Singleton<DataManager>
 {
-    private DialogManager dialog;
+    public DialogManager dialog;
 
     // Start is called before the first frame update
     DataManager()
