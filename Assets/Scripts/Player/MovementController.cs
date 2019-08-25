@@ -22,7 +22,7 @@ public class MovementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GameStateManager._instance.IsPaused())
+        if (!GameStateManager.Instance.IsPaused())
         {
             float translation = Input.GetAxis("Vertical") * m_walkSpeed * Time.deltaTime;
             float straffe = Input.GetAxis("Horizontal") * m_walkSpeed * Time.deltaTime;

@@ -27,26 +27,26 @@ public class ExamineItems : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1) && !m_isExaminig)
         {
             m_isExaminig = true;
-            GameStateManager._instance.PauseGame();
+            GameStateManager.Instance.PauseGame();
             Debug.Log("1");
            m_item = Instantiate(m_itemList[0], new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, Camera.main.transform.position.z) + Camera.main.transform.forward * DISTANCE, Camera.main.transform.rotation);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2) && !m_isExaminig)
         {
             m_isExaminig = true;
-            GameStateManager._instance.PauseGame();
+            GameStateManager.Instance.PauseGame();
             Debug.Log("2");
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3) && !m_isExaminig)
         {
             m_isExaminig = true;
-            GameStateManager._instance.PauseGame();
+            GameStateManager.Instance.PauseGame();
             Debug.Log("3");
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4) && !m_isExaminig)
         {
             m_isExaminig = true;
-            GameStateManager._instance.PauseGame();
+            GameStateManager.Instance.PauseGame();
             Debug.Log("4");
         }
         else if (Input.GetMouseButtonDown(0) && m_isExaminig && m_item.GetComponent<Consumable>() != null && m_item.GetComponent<Consumable>().CanConsume())
@@ -58,14 +58,14 @@ public class ExamineItems : MonoBehaviour
             {
                 Destroy(m_item);
                 m_isExaminig = false;
-                GameStateManager._instance.ResumeGame();
+                GameStateManager.Instance.ResumeGame();
             }
         }
         else if (Input.GetMouseButtonDown(1) && m_isExaminig)
         {
             Destroy(m_item);
             m_isExaminig = false;
-            GameStateManager._instance.ResumeGame();
+            GameStateManager.Instance.ResumeGame();
         }
     }
 

@@ -2,23 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameStateManager : MonoBehaviour
+public class GameStateManager : Singleton<GameStateManager>
 {
-    private static GameStateManager m_instance;
     private bool m_isPaused = false;
-
-    public static GameStateManager _instance
-    {
-        get
-        {
-            if (m_instance == null)
-            {
-                m_instance = new GameObject("GameStateManager").AddComponent<GameStateManager>();
-            }
-
-            return m_instance;
-        }
-    }
 
     public void PauseGame()
     {

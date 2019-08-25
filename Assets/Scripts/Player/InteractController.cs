@@ -17,7 +17,7 @@ public class InteractController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<Interactable>() != null && !GameStateManager._instance.IsPaused())
+        if (other.gameObject.GetComponent<Interactable>() != null && !GameStateManager.Instance.IsPaused())
         {
             if(other.gameObject.GetComponent<Interactable>().CanInteract())
             {
@@ -32,7 +32,7 @@ public class InteractController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.GetComponent<Interactable>() != null && !GameStateManager._instance.IsPaused())
+        if (other.gameObject.GetComponent<Interactable>() != null && !GameStateManager.Instance.IsPaused())
         {
             if (Input.GetMouseButtonDown(0) && other.gameObject.GetComponent<Interactable>().CanInteract())
             {
@@ -48,7 +48,7 @@ public class InteractController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.GetComponent<Interactable>() != null && !GameStateManager._instance.IsPaused())
+        if (other.gameObject.GetComponent<Interactable>() != null && !GameStateManager.Instance.IsPaused())
         {
             m_reticle.GetComponent<Image>().color = Color.white;
         }
@@ -56,7 +56,7 @@ public class InteractController : MonoBehaviour
 
     void Update()
     {
-        if(GameStateManager._instance.IsPaused())
+        if(GameStateManager.Instance.IsPaused())
         {
             m_reticle.gameObject.SetActive(false);
         }
