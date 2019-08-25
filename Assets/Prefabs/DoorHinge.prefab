@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4962567954599739811}
   - component: {fileID: 4962567954599739809}
   - component: {fileID: 4962567954599739822}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DoorHinge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 4962567954741418726}
   - component: {fileID: 4962567954741418745}
   - component: {fileID: 4962567954741418744}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
