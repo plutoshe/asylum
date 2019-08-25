@@ -7,6 +7,9 @@ public class InteractController : MonoBehaviour
 {
 
     public Image m_reticle;
+    public Color m_idleColor;
+    public Color m_interactColor;
+    public Color m_nonInteractColor;
 
     //removes the mouse and locks the mouse onto the game screen
     void Start()
@@ -21,11 +24,11 @@ public class InteractController : MonoBehaviour
         {
             if(other.gameObject.GetComponent<Interactable>().CanInteract())
             {
-                m_reticle.GetComponent<Image>().color = Color.green;      
+                m_reticle.GetComponent<Image>().color = m_interactColor;      
             }
             else
             {
-                m_reticle.GetComponent<Image>().color = Color.red;
+                m_reticle.GetComponent<Image>().color = m_nonInteractColor;
             }
         }
     }
@@ -40,7 +43,7 @@ public class InteractController : MonoBehaviour
 
                 if(!other.gameObject.GetComponent<Interactable>().CanInteract())
                 {
-                    m_reticle.GetComponent<Image>().color = Color.red;
+                    m_reticle.GetComponent<Image>().color = m_nonInteractColor;
                 }
             }
         }
@@ -50,7 +53,7 @@ public class InteractController : MonoBehaviour
     {
         if (other.gameObject.GetComponent<Interactable>() != null && !GameStateManager.Instance.IsPaused())
         {
-            m_reticle.GetComponent<Image>().color = Color.white;
+            m_reticle.GetComponent<Image>().color = m_idleColor;
         }
     }
 

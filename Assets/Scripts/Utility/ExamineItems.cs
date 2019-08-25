@@ -8,7 +8,7 @@ public class ExamineItems : MonoBehaviour
     private GameObject m_item;
     private bool m_isExaminig;
     private float DISTANCE = .75f;
-    private Vector3 MENUPOS = new Vector3(500,500,500);
+    private Vector3 MENUPOS;
     private Quaternion MENUROT = new Quaternion(0,0,0,0);
     private Vector3 m_originPos;
     private Quaternion m_originRot;
@@ -20,6 +20,7 @@ public class ExamineItems : MonoBehaviour
     {
         m_isExaminig = false;
         m_player = GameObject.Find("Player");
+        MENUPOS = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z-10);
     }
 
     // Update is called once per frame
