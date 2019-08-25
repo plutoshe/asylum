@@ -20,4 +20,10 @@ public class GameStateManager : Singleton<GameStateManager>
     {
         return m_isPaused;
     }
+
+    public void ChangeIdentity()
+    {
+        Debug.Log("[GameStateManager] On Mirror, Change Identity");
+    }
+
 }
