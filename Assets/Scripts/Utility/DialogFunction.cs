@@ -19,7 +19,7 @@ public class DialogFunction : MonoBehaviour
 
     void UpdateDialog()
     {
-        int itemType = DataManager.Instance.dialog.GetNextDialog(out m_GameDialog, out m_GameSelections);
+        int itemType = DataManager.Instance.GetNextDialog(out m_GameDialog, out m_GameSelections);
         switch (itemType)
         {
             case -1: m_Dialog.text = ""; break;
@@ -40,17 +40,17 @@ public class DialogFunction : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            DataManager.Instance.dialog.GetCollection(3);
+            DataManager.Instance.GetCollection(3);
             UpdateDialog();
         }
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            DataManager.Instance.dialog.GetCollection(1);
+            DataManager.Instance.GetCollection(1);
             UpdateDialog();
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            DataManager.Instance.dialog.GetCollection(2);
+            DataManager.Instance.GetCollection(2);
             UpdateDialog();
         }
     }
