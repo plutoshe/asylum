@@ -14,14 +14,33 @@ public class InteractController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.GetComponent<Interactable>() != null)
+        {
+            if(other.gameObject.GetComponent<Interactable>().CanInteract())
+            {
+                m_reticle.GetComponent<Image>().color = Color.green;      
+            }
+            else
+            {
+                m_reticle.GetComponent<Image>().color = Color.red;
+            }
+        }
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.GetComponent<Interactable>() != null)
         {
-            m_reticle.GetComponent<RectTransform>().sizeDelta = new Vector2(100, 100);
             if (Input.GetMouseButtonDown(0) && other.gameObject.GetComponent<Interactable>().CanInteract())
             {
                 other.gameObject.GetComponent<Interactable>().Interact();
+
+                if(!other.gameObject.GetComponent<Interactable>().CanInteract())
+                {
+                    m_reticle.GetComponent<Image>().color = Color.red;
+                }
             }
         }
     }
@@ -30,7 +49,7 @@ public class InteractController : MonoBehaviour
     {
         if (other.gameObject.GetComponent<Interactable>() != null)
         {
-            m_reticle.GetComponent<RectTransform>().sizeDelta = new Vector2(50, 50);
+            m_reticle.GetComponent<Image>().color = Color.white;
         }
     }
 }
