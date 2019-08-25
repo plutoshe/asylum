@@ -10,30 +10,35 @@ public class MovementController : MonoBehaviour
     private Vector2 m_mousePos;
     private Vector2 m_smoothV;
     private Transform m_mainCamera;
-    
+    private Rigidbody m_rigidBody;
+
 
     private void Start()
     {
         m_mainCamera = Camera.main.transform;
+        m_rigidBody = gameObject.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        float translation = Input.GetAxis("Vertical") * m_walkSpeed * Time.deltaTime;
-        float straffe = Input.GetAxis("Horizontal") * m_walkSpeed * Time.deltaTime;
+        if (!GameStateManager.Instance.IsPaused())
+        {
+            float translation = Input.GetAxis("Vertical") * m_walkSpeed * Time.deltaTime;
+            float straffe = Input.GetAxis("Horizontal") * m_walkSpeed * Time.deltaTime;
 
-        transform.Translate(straffe,0,translation);
+            transform.Translate(straffe, 0, translation);
 
-        Vector2 temp = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+            Vector2 temp = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
 
-        temp = Vector2.Scale(temp,new Vector2(m_sensitivity*m_smoothing,m_sensitivity*m_smoothing));
-        m_smoothV.x = Mathf.Lerp(m_smoothV.x,temp.x,1f/m_smoothing);
-        m_smoothV.y = Mathf.Lerp(m_smoothV.y, temp.y, 1f / m_smoothing);
-        m_mousePos += m_smoothV;
-        m_mousePos.y = Mathf.Clamp(m_mousePos.y, -90f, 90f);
+            temp = Vector2.Scale(temp, new Vector2(m_sensitivity * m_smoothing, m_sensitivity * m_smoothing));
+            m_smoothV.x = Mathf.Lerp(m_smoothV.x, temp.x, 1f / m_smoothing);
+            m_smoothV.y = Mathf.Lerp(m_smoothV.y, temp.y, 1f / m_smoothing);
+            m_mousePos += m_smoothV;
+            m_mousePos.y = Mathf.Clamp(m_mousePos.y, -90f, 90f);
 
-        m_mainCamera.localRotation = Quaternion.AngleAxis(-m_mousePos.y,Vector3.right);
-        transform.localRotation = Quaternion.AngleAxis(m_mousePos.x, transform.up);
+            m_mainCamera.localRotation = Quaternion.AngleAxis(-m_mousePos.y, Vector3.right);
+            transform.localRotation = Quaternion.AngleAxis(m_mousePos.x, transform.up);
+        }
     }
 }
