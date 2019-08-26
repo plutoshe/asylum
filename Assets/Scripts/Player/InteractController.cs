@@ -41,7 +41,11 @@ public class InteractController : MonoBehaviour
             {
                 other.gameObject.GetComponent<Interactable>().Interact();
 
-                if(!other.gameObject.GetComponent<Interactable>().CanInteract())
+                if(other.gameObject.GetComponent<Collectible>() != null)
+                {
+                    m_reticle.GetComponent<Image>().color = m_idleColor;
+                }
+                else if(!other.gameObject.GetComponent<Interactable>().CanInteract())
                 {
                     m_reticle.GetComponent<Image>().color = m_nonInteractColor;
                 }

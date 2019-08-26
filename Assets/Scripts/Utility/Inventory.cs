@@ -111,10 +111,22 @@ public class Inventory : Singleton<Inventory>
     }
 
     public bool PlaceItemInInventory(GameObject item)
-    {        
-        for(int i = 0; i < m_itemList.Length; i++)
+    {
+        if (item.GetComponent<Consumable>() != null)
         {
-            if(m_itemList[i] == null)
+            for (int i = 0; i < m_itemList.Length; i++)
+            {
+                if (m_itemList[i] != null && m_itemList[i].GetComponent<Consumable>() != null && item.GetComponent<Consumable>().GetConsumableType().Equals(m_itemList[i]))
+                {
+                    m_itemList[i].GetComponent<Consumable>().Gain(item.GetComponent<Consumable>().GetUses());
+                    return true;
+                }
+            }
+        }
+
+        for (int i = 0; i < m_itemList.Length; i++)
+        {
+            if (m_itemList[i] == null)
             {
                 item.transform.position = new Vector3(MENUPOS.x, MENUPOS.y + YOFFSET, MENUPOS.z + DISTANCE);
                 item.SetActive(false);
