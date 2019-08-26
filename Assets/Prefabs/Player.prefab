@@ -42,7 +42,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.25
+  m_Radius: 0.1
   m_Height: 1.5
   m_Direction: 2
   m_Center: {x: 0, y: 0.25, z: 1}
@@ -59,6 +59,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_reticle: {fileID: 0}
+  m_idleColor: {r: 0.9433962, g: 0.9211463, b: 0.9211463, a: 0.48235294}
+  m_interactColor: {r: 0.39953712, g: 0.9528302, b: 0.17528482, a: 0.48235294}
+  m_nonInteractColor: {r: 0.9811321, g: 0.27305093, b: 0.27305093, a: 0.48235294}
 --- !u!1 &4884648179087635719
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,7 +158,6 @@ GameObject:
   - component: {fileID: 4884648179793469836}
   - component: {fileID: 4884648179793469838}
   - component: {fileID: 1183680903}
-  - component: {fileID: 2011462130}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -223,17 +225,3 @@ CapsuleCollider:
   m_Height: 1.75
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2011462130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4884648179793469835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3212cdf246bdc9640954e774c6749eb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_itemList:
-  - {fileID: 5049995225578876762, guid: 6ec88642e1e34fa428d311272e70bd3c, type: 3}
