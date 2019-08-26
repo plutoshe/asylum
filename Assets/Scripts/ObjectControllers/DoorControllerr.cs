@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorManager : Interactable
+public class DoorController : Interactable
 {
     [SerializeField] private bool m_locked = false;
 
