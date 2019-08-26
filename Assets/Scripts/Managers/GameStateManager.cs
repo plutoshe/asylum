@@ -35,4 +35,16 @@ public class GameStateManager : Singleton<GameStateManager>
         GuiManager.Instance.PlayingGuiDemonstration();
     }
 
+    public void ExamineItem()
+    {
+        PauseGame();
+        GuiManager.Instance.OpenExamineGui();
+    }
+
+    public void DoneExaminig()
+    {
+        ResumeGame();
+        GuiManager.Instance.CloseExamineGui();
+    }
+
 }

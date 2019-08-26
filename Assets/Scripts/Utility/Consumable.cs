@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Consumable : MonoBehaviour
+public class Consumable : Collectible
 {
     private int m_uses = 0;
     public virtual void Consume()
@@ -30,6 +30,11 @@ public class Consumable : MonoBehaviour
     public void Use()
     {
         m_uses--;
+
+        if(m_uses <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     public void Gain(int quantity)

@@ -56,16 +56,4 @@ public class InteractController : MonoBehaviour
             m_reticle.GetComponent<Image>().color = m_idleColor;
         }
     }
-
-    void Update()
-    {
-        if(GameStateManager.Instance.IsPaused())
-        {
-            m_reticle.gameObject.SetActive(false);
-        }
-        else
-        {
-            m_reticle.gameObject.SetActive(true);
-        }
-    }
 }

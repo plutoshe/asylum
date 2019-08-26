@@ -18,4 +18,16 @@ public class GuiManager : Singleton<GuiManager>
         PlayingGui.SetActive(true);
         IdentityGui.SetActive(false);
     }
+
+    public void CloseExamineGui()
+    {
+        PlayingGui.SetActive(true);
+        IdentityGui.SetActive(false);
+    }
+
+    public void OpenExamineGui()
+    {
+        PlayingGui.SetActive(false);
+        IdentityGui.SetActive(false);
+    }
 }
