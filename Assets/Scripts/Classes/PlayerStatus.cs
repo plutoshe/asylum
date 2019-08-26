@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStatus : MonoBehaviour
-{
+public class PlayerStatus
+{ 
     public int m_IdentityID;
     public PlayerStatus(int identityID)
     {
