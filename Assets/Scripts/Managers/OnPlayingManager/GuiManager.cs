@@ -13,6 +13,8 @@ public class GuiManager : MonoBehaviour
         CustomEventManager.Instance.StartListening(GuiEventConstant.s_DialogClose, CloseDialog);
         CustomEventManager.Instance.StartListening(GuiEventConstant.s_PlayerPlaying, PlayingGuiDemonstration);
         CustomEventManager.Instance.StartListening(GuiEventConstant.s_IdentityChange, IdentityGuiDemonstration);
+        CustomEventManager.Instance.StartListening(GuiEventConstant.s_OpenExamine, OpenExamineGui);
+        CustomEventManager.Instance.StartListening(GuiEventConstant.s_CloseExamine, CloseExamineGui);
     }
 
     public void OnDisable()
@@ -21,6 +23,8 @@ public class GuiManager : MonoBehaviour
         CustomEventManager.Instance.StopListening(GuiEventConstant.s_DialogClose, CloseDialog);
         CustomEventManager.Instance.StopListening(GuiEventConstant.s_PlayerPlaying, PlayingGuiDemonstration);
         CustomEventManager.Instance.StopListening(GuiEventConstant.s_IdentityChange, IdentityGuiDemonstration);
+        CustomEventManager.Instance.StopListening(GuiEventConstant.s_OpenExamine, OpenExamineGui);
+        CustomEventManager.Instance.StopListening(GuiEventConstant.s_CloseExamine, CloseExamineGui);
     }
 
     public void IdentityGuiDemonstration()

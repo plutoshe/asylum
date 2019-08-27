@@ -12,7 +12,6 @@ public class CustomEventManager : Singleton<CustomEventManager>
         m_eventDictionary = new Dictionary<string, Delegate>();
     }
 
-
     public void StartListening(string eventName, Action listener)
     {
         Delegate thisEvent;
