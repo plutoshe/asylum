@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : Singleton<Inventory>
 {
@@ -16,6 +17,9 @@ public class Inventory : Singleton<Inventory>
     private float DISTANCE = .75f;
     private Vector3 MENUPOS;
     private Quaternion MENUROT = new Quaternion(0,0,0,0);
+
+    [SerializeField] private Image[] m_itemImages = new Image[4];
+
 
     // Start is called before the first frame update
     void Start()
@@ -65,11 +69,13 @@ public class Inventory : Singleton<Inventory>
         }
         else if (Input.GetMouseButtonDown(0) && m_isExaminig && m_item.GetComponent<Consumable>() != null && m_item.GetComponent<Consumable>().CanConsume())
         {
+            int tempSlot = m_item.GetComponent<Collectible>().GetSlot();
             m_item.GetComponent<Consumable>().Use();
             m_item.GetComponent<Consumable>().Consume();
 
-            if (!m_item.GetComponent<Consumable>().CanConsume())
+            if (m_item == null)
             {
+                m_itemImages[tempSlot].enabled = false;
                 EndExamine();
             }
         }
@@ -95,8 +101,8 @@ public class Inventory : Singleton<Inventory>
     {
         m_item.SetActive(false);
         m_isExaminig = false;
-        m_player.transform.position = m_originPos;
         m_player.transform.rotation = m_originRot;
+        m_player.transform.position = m_originPos;
         m_player.GetComponent<Rigidbody>().useGravity = true;
         GameStateManager.Instance.DoneExaminig();
     }
@@ -130,7 +136,10 @@ public class Inventory : Singleton<Inventory>
             {
                 item.transform.position = new Vector3(MENUPOS.x, MENUPOS.y + YOFFSET, MENUPOS.z + DISTANCE);
                 item.SetActive(false);
+                item.GetComponent<Collectible>().SetSlot(i);
                 m_itemList[i] = item;
+                m_itemImages[i].sprite = item.GetComponent<Collectible>().GetImage();
+                m_itemImages[i].enabled = true;
                 return true;
             }
         }
