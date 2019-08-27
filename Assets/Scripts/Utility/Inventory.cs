@@ -11,7 +11,7 @@ public class Inventory : Singleton<Inventory>
     private Quaternion m_originRot;
     private GameObject m_player;
 
-    private float YOFFSET = .25f;
+    private float YOFFSET = .75f;
     private float ROTSPEED = 3;
     private float DISTANCE = .75f;
     private Vector3 MENUPOS;
