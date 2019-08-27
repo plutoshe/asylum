@@ -5,7 +5,8 @@ using UnityEngine;
 public class GameStateManager : Singleton<GameStateManager>
 {
     private bool m_isPaused = false;
-    
+    private Vector3 m_oldCameraPosition;
+    private Quaternion m_oldCameraRotation;
     public void PauseGame()
     {
         m_isPaused = true;
@@ -25,26 +26,45 @@ public class GameStateManager : Singleton<GameStateManager>
     {
         PauseGame();
         Debug.Log("[GameStateManager] On Mirror, Change Identity");
-        GuiManager.Instance.IdentityGuiDemonstration();
+        CustomEventManager.Instance.TriggerEvent(GuiEventConstant.s_IdentityChange);
     }
 
     public void BackToPlaying()
     {
         ResumeGame();
         Debug.Log("[GameStateManager] On Mirror, Change Identity");
-        GuiManager.Instance.PlayingGuiDemonstration();
+        CustomEventManager.Instance.TriggerEvent(GuiEventConstant.s_PlayerPlaying);
     }
 
     public void ExamineItem()
     {
         PauseGame();
-        GuiManager.Instance.OpenExamineGui();
+        CustomEventManager.Instance.TriggerEvent(GuiEventConstant.s_OpenExamine);
     }
 
     public void DoneExaminig()
     {
         ResumeGame();
-        GuiManager.Instance.CloseExamineGui();
+        CustomEventManager.Instance.TriggerEvent(GuiEventConstant.s_CloseExamine);
+    }
+
+    public void ShowDialog(int collectionID, Camera viewCamera)
+    {
+        PauseGame();
+        m_oldCameraPosition = Camera.main.transform.position;
+        m_oldCameraRotation = Camera.main.transform.rotation;
+        Camera.main.transform.position = viewCamera.transform.position;
+        Camera.main.transform.rotation = viewCamera.transform.rotation;
+        DataManager.Instance.GetCollection(collectionID);
+        CustomEventManager.Instance.TriggerEvent(GuiEventConstant.s_DialogDemonstration);
+    }
+
+    public void DoneDialog()
+    {
+        Camera.main.transform.position = m_oldCameraPosition;
+        Camera.main.transform.rotation = m_oldCameraRotation;
+        CustomEventManager.Instance.TriggerEvent(GuiEventConstant.s_DialogClose);
+        ResumeGame();
     }
 
 }
