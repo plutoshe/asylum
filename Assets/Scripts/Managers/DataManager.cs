@@ -44,4 +44,14 @@ public class DataManager : Singleton<DataManager>
     {
         return m_playerStatus.m_IdentityID;
     }
+
+    public bool IsDayTime()
+    {
+        return m_playerStatus.m_Time == 0;
+    }
+
+    public void ToggleTime()
+    {
+        m_playerStatus.m_Time = 1 - m_playerStatus.m_Time;
+    }
 }
