@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
-    [SerializeField] private float m_walkSpeed = 1.4f;
-    [SerializeField] private float m_sensitivity = 3f;
+    [SerializeField] private float m_walkSpeed = 3f;
+    [SerializeField] private float m_runSpeed = 6f;
+    [SerializeField] private float m_sensitivity = 1f;
     [SerializeField] private float m_smoothing = 1f;
+    [SerializeField] private float m_staminaExpense = .5f;
+    [SerializeField] private float m_maxStamina = 100f;
     private Vector2 m_mousePos;
     private Vector2 m_smoothV;
     private Transform m_mainCamera;
     private Rigidbody m_rigidBody;
+    private float m_stamina;
 
 
     private void Start()
@@ -22,10 +26,23 @@ public class MovementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float translation;
+        float straffe;
+
         if (!GameStateManager.Instance.IsPaused())
         {
-            float translation = Input.GetAxis("Vertical") * m_walkSpeed * Time.deltaTime;
-            float straffe = Input.GetAxis("Horizontal") * m_walkSpeed * Time.deltaTime;
+            if(Input.GetKey(KeyCode.LeftShift) && m_stamina >= m_staminaExpense)
+            {
+                translation = Input.GetAxis("Vertical") * m_runSpeed * Time.deltaTime;
+                straffe = Input.GetAxis("Horizontal") * m_runSpeed * Time.deltaTime;
+                DepleteStamina(m_staminaExpense);
+                Debug.Log(m_stamina);
+            }
+            else
+            {
+                translation = Input.GetAxis("Vertical") * m_walkSpeed * Time.deltaTime;
+                straffe = Input.GetAxis("Horizontal") * m_walkSpeed * Time.deltaTime;
+            }
 
             transform.Translate(straffe, 0, translation);
 
@@ -39,6 +56,26 @@ public class MovementController : MonoBehaviour
 
             m_mainCamera.localRotation = Quaternion.AngleAxis(-m_mousePos.y, Vector3.right);
             transform.localRotation = Quaternion.AngleAxis(m_mousePos.x, transform.up);
+
+            if (!Input.GetKey(KeyCode.LeftShift) && m_stamina < m_maxStamina)
+            {
+                RecoverStamina(m_staminaExpense);
+            }
         }
+    }
+
+    public void RecoverStamina(float amount)
+    {
+        m_stamina += amount;
+    }
+
+    public void DepleteStamina(float amount)
+    {
+        m_stamina -= amount;
+    }
+
+    public void SetStamina(float amount)
+    {
+        m_stamina = amount;
     }
 }

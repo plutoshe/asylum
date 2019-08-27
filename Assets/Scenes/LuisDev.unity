@@ -120,6 +120,26 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &303064475 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3479471317303636907, guid: 6ba6f4c98d81b1d4e8da8a976d7df092,
+    type: 3}
+  m_PrefabInstance: {fileID: 4857270376605910178}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &303064479
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303064475}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: -7353910727717245673, guid: 8ae465af7afc18448b6bbce834c12bcb, type: 3}
 --- !u!114 &444987118 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3046504642167819390, guid: b2531e4daf96fb147b3c20bf76eab640,
@@ -475,6 +495,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3479471316796734671, guid: 6ba6f4c98d81b1d4e8da8a976d7df092,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ba6f4c98d81b1d4e8da8a976d7df092, type: 3}
 --- !u!1001 &4884648180975970312
@@ -497,12 +522,12 @@ PrefabInstance:
     - target: {fileID: 4884648179793469837, guid: 354b27ce1cd195e4fa755ebd2b15f727,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.75
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 4884648179793469837, guid: 354b27ce1cd195e4fa755ebd2b15f727,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -26.9
+      value: -26.32
       objectReference: {fileID: 0}
     - target: {fileID: 4884648179793469837, guid: 354b27ce1cd195e4fa755ebd2b15f727,
         type: 3}
