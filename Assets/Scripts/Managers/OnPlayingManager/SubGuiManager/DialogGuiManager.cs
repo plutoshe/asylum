@@ -3,26 +3,23 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class DialogFunction : MonoBehaviour
+public class DialogGuiManager : MonoBehaviour
 {
-    public Sprite m_CharacterNormal;
-    public Sprite m_CharacterScared;
-    public Sprite m_CharacterShout;
     public Text m_Dialog;
-    DialogDetail m_GameDialog;
-    SelectionDetail m_GameSelections;
+    private DialogDetail m_GameDialog;
+    private SelectionDetail m_GameSelections;
 
-    void Start()
+    private void OnEnable()
     {
-        m_Dialog.text = "";
+        UpdateDialog();
     }
 
-    void UpdateDialog()
+    private void UpdateDialog()
     {
         int itemType = DataManager.Instance.GetNextDialog(out m_GameDialog, out m_GameSelections);
         switch (itemType)
         {
-            case -1: m_Dialog.text = ""; break;
+            case -1: GameStateManager.Instance.DoneDialog(); break;
             case 0: m_Dialog.text = m_GameDialog.m_dialog; break;
             case 1: m_Dialog.text = "it is a selection"; break;
 
@@ -35,7 +32,6 @@ public class DialogFunction : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             UpdateDialog();
-
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))

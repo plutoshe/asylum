@@ -9,6 +9,13 @@ public class DialogDetail
     public Sprite m_characterImage;
     public DialogDetail()
     { }
+
+    public static DialogDetail ConversionFromXML(XmlNode node)
+    {
+        DialogDetail dialog = new DialogDetail();
+        dialog.m_dialog = node.Attributes["text"].Value;
+        return dialog;
+    }
 }
 
 public class SelectionDetail
@@ -17,6 +24,25 @@ public class SelectionDetail
     public SelectionDetail()
     {
         m_selections = new List<Selection>();
+    }
+
+    public static SelectionDetail ConversionFromXML(XmlNode node)
+    {
+        SelectionDetail newSelectionDetail = new SelectionDetail();
+        XmlNodeList selections = node.ChildNodes;
+        for (int selectionID = 0; selectionID < selections.Count; selectionID++)
+        {
+            if (selections[selectionID].Name == "item")
+            {
+                newSelectionDetail.m_selections.Add(
+                    new Selection(
+                        selections[selectionID].Attributes["text"].Value,
+                        int.Parse(selections[selectionID].Attributes["id"].Value)
+                    )
+                );
+            }
+        }
+        return newSelectionDetail;
     }
 }
 
@@ -38,11 +64,27 @@ public class Selection
 
 public class DialogCollection
 {
-    public List<DialogDetail> m_dialogs;
-    public SelectionDetail m_finalSelection;
+    public List<ActionNode> m_actions;
     public DialogCollection()
     {
-        m_dialogs = new List<DialogDetail>();
+        m_actions = new List<ActionNode>();
+    }
+}
+
+public class ActionNode
+{
+    public string m_Type;
+    public XmlNode m_Detail;
+
+    public ActionNode()
+    {
+        m_Type = "";
+        m_Detail = null;
+    }
+    public ActionNode(string type, XmlNode detail)
+    {
+        m_Type = type;
+        m_Detail = detail;
     }
 }
 
@@ -70,31 +112,7 @@ public class DialogManager
             XmlNodeList dialogList = nodes[i].ChildNodes;
             for (int dialogID = 0; dialogID < dialogList.Count; dialogID++)
             {
-                switch (dialogList[dialogID].Name)
-                {
-                    case "dialog":
-                        DialogDetail newDialogDetail = new DialogDetail();
-                        newDialogDetail.m_dialog = dialogList[dialogID].Attributes["text"].Value;
-                        newDialogCollection.m_dialogs.Add(newDialogDetail);
-                        break;
-                    case "selection":
-                        SelectionDetail newSelectionDetail = new SelectionDetail();
-                        XmlNodeList selections = dialogList[dialogID].ChildNodes;
-                        for (int selectionID = 0; selectionID < selections.Count; selectionID++)
-                        {
-                            if (selections[selectionID].Name == "item")
-                            {
-                                newSelectionDetail.m_selections.Add(
-                                    new Selection(
-                                        selections[selectionID].Attributes["text"].Value,
-                                        int.Parse(selections[selectionID].Attributes["id"].Value)
-                                    )
-                                );
-                            }
-                        }
-                        newDialogCollection.m_finalSelection = newSelectionDetail;
-                        break;
-                }
+                newDialogCollection.m_actions.Add(new ActionNode(dialogList[dialogID].Name, dialogList[dialogID]));
             }
             m_dialogCollections.Add(int.Parse(nodes[i].Attributes["id"].Value), newDialogCollection);
         }
@@ -104,37 +122,29 @@ public class DialogManager
     {
         dialog = null;
         selection = null;
-        if (m_currentCollection != null)
+        if (m_currentCollection != null && m_currentCollection.m_actions != null &&
+            m_currentCollectionDialogID < m_currentCollection.m_actions.Count)
         {
-            if (m_currentCollectionDialogID < m_currentCollection.m_dialogs.Count)
+            ActionNode action = m_currentCollection.m_actions[m_currentCollectionDialogID];
+            m_currentCollectionDialogID++;
+            switch (action.m_Type)
             {
-                dialog = m_currentCollection.m_dialogs[m_currentCollectionDialogID];
-                m_currentCollectionDialogID++;
-                return 0;
-            }
-            else if (!m_finishSelection && m_currentCollection.m_finalSelection != null)
-            {
-                selection = m_currentCollection.m_finalSelection;
-                m_finishSelection = true;
-                return 1;
-
+                case "dialog":
+                    dialog = DialogDetail.ConversionFromXML(action.m_Detail);
+                    return 0;
+                case "selection":
+                    selection = SelectionDetail.ConversionFromXML(action.m_Detail);
+                    return 1;
             }
         }
+       
         return -1;
     }
     public void GetCollection(int collectionID)
     {
-        if (m_currentCollectionID != collectionID)
-        {
-            m_currentCollectionID = collectionID;
-            m_currentCollection = m_dialogCollections[collectionID];
-            m_currentCollectionDialogID = 0;
-            m_finishSelection = false;
-        }
-        else
-        {
-            m_currentCollectionDialogID++;
-        }
-        
+        m_currentCollectionID = collectionID;
+        m_currentCollection = m_dialogCollections[collectionID];
+        m_currentCollectionDialogID = 0;
+        m_finishSelection = false; 
     }
 }
