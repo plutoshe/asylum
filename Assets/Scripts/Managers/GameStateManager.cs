@@ -25,26 +25,26 @@ public class GameStateManager : Singleton<GameStateManager>
     {
         PauseGame();
         Debug.Log("[GameStateManager] On Mirror, Change Identity");
-        GuiManager.Instance.IdentityGuiDemonstration();
+        CustomEventManager.Instance.TriggerEvent(GuiEventConstant.IdentityChange);
     }
 
     public void BackToPlaying()
     {
         ResumeGame();
         Debug.Log("[GameStateManager] On Mirror, Change Identity");
-        GuiManager.Instance.PlayingGuiDemonstration();
+        CustomEventManager.Instance.TriggerEvent(GuiEventConstant.PlayerPlaying);
     }
 
     public void ExamineItem()
     {
         PauseGame();
-        GuiManager.Instance.OpenExamineGui();
+        CustomEventManager.Instance.TriggerEvent(GuiEventConstant.OpenExamine);
     }
 
     public void DoneExaminig()
     {
         ResumeGame();
-        GuiManager.Instance.CloseExamineGui();
+        CustomEventManager.Instance.TriggerEvent(GuiEventConstant.CloseExamine);
     }
 
 }

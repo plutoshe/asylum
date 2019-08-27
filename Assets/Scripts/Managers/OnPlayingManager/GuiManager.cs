@@ -2,10 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GuiManager : Singleton<GuiManager>
+public class GuiManager : MonoBehaviour
 {
     public GameObject IdentityGui;
     public GameObject PlayingGui;
+
+    public void OnEnable()
+    {
+        CustomEventManager.Instance.StartListening(GuiEventConstant.IdentityChange, IdentityGuiDemonstration);
+        CustomEventManager.Instance.StartListening(GuiEventConstant.PlayerPlaying, PlayingGuiDemonstration);
+    }
+
+    public void OnDisable()
+    {
+
+    }
 
     public void IdentityGuiDemonstration()
     {
