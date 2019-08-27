@@ -15,7 +15,6 @@ public class CustomEventManager : Singleton<CustomEventManager>
 
     public void StartListening(string eventName, Action listener)
     {
-        print("start listing");
         Delegate thisEvent;
         if (m_eventDictionary.TryGetValue(eventName, out thisEvent))
         {

@@ -13,6 +13,12 @@ public static class GuiEventConstant
 
 }
 
+public static class CustomEventConstant
+{
+    public static string s_ToDayTime = "ToDayTime";
+    public static string s_ToNight = "ToNight";
+}
+
 public static class CameraEventConstant
 {
     public static string s_ChangeToSubCamera = "ChangeToSubCamaera";

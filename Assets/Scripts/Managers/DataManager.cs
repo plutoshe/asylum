@@ -25,9 +25,14 @@ public class DataManager : Singleton<DataManager>
         m_dialog.GetCollection(collectionID);
     }
 
-    public int GetNextDialog(out DialogDetail dialog, out SelectionDetail selection)
+    public ActionType GetNextDialog(out DialogDetail dialog, out SelectionDetail selection)
     {
         return m_dialog.GetNextDialog(out dialog, out selection);
+    }
+
+    public ActionType GetCurrentDialog(out DialogDetail dialog, out SelectionDetail selection)
+    {
+        return m_dialog.GetCurrentDialog(out dialog, out selection);
     }
 
     public void ChangeIdentity(int identityID)
@@ -38,5 +43,15 @@ public class DataManager : Singleton<DataManager>
     public int GetIdentityID()
     {
         return m_playerStatus.m_IdentityID;
+    }
+
+    public bool IsDayTime()
+    {
+        return m_playerStatus.m_Time == 0;
+    }
+
+    public void ToggleTime()
+    {
+        m_playerStatus.m_Time = 1 - m_playerStatus.m_Time;
     }
 }

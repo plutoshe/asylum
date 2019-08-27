@@ -37,7 +37,7 @@ public class InteractController : MonoBehaviour
     {
         if (other.gameObject.GetComponent<Interactable>() != null && !GameStateManager.Instance.IsPaused())
         {
-            if (Input.GetMouseButtonDown(0) && other.gameObject.GetComponent<Interactable>().CanInteract())
+            if (Input.GetMouseButtonUp(0) && other.gameObject.GetComponent<Interactable>().CanInteract())
             {
                 other.gameObject.GetComponent<Interactable>().Interact();
 
