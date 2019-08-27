@@ -11,19 +11,25 @@ public class DialogGuiManager : MonoBehaviour
 
     private void OnEnable()
     {
-        UpdateDialog();
+        ActionType itemType = DataManager.Instance.GetCurrentDialog(out m_GameDialog, out m_GameSelections);
+        UpdateUI(itemType);
+    }
+
+    private void UpdateUI(ActionType itemType)
+    {
+        switch (itemType)
+        {
+            case ActionType.None: GameStateManager.Instance.DoneDialog(); break;
+            case ActionType.Dialog: m_Dialog.text = m_GameDialog.m_dialog; break;
+            case ActionType.Selection: m_Dialog.text = "it is a selection"; break;
+
+        }
     }
 
     private void UpdateDialog()
     {
-        int itemType = DataManager.Instance.GetNextDialog(out m_GameDialog, out m_GameSelections);
-        switch (itemType)
-        {
-            case -1: GameStateManager.Instance.DoneDialog(); break;
-            case 0: m_Dialog.text = m_GameDialog.m_dialog; break;
-            case 1: m_Dialog.text = "it is a selection"; break;
-
-        }
+        ActionType itemType = DataManager.Instance.GetNextDialog(out m_GameDialog, out m_GameSelections);
+        UpdateUI(itemType);
     }
 
     // Update is called once per frame
