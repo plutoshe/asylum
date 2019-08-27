@@ -9,27 +9,36 @@ public class IdentityGuiManager : MonoBehaviour
     public Image m_Identity01;
     public Animator m_FemaleGlow;
     public Animator m_FemaleShow;
+
     public Image m_Identity02;
+    public Animator m_MaleGlow;
     public Animator m_MaleShow;
 
     private int m_IdentityNum;
     void SelectFemaleEffect()
     {
         m_FemaleGlow.gameObject.SetActive(true);
+        m_MaleGlow.gameObject.SetActive(false);
 
         m_FemaleGlow.SetBool("GlowStart", true);
         m_FemaleShow.SetBool("Show", true);
+
+        m_MaleGlow.SetBool("GlowStart", false);
         m_MaleShow.SetBool("Show", false);
     }
 
     void SelectMaleEffect()
     {
         m_FemaleGlow.gameObject.SetActive(false);
+        m_MaleGlow.gameObject.SetActive(true);
 
         m_FemaleGlow.SetBool("GlowStart", false);
         m_FemaleShow.SetBool("Show", false);
+
+        m_MaleShow.SetBool("GlowStart", true);
         m_MaleShow.SetBool("Show", true);
     }
+
 
     private void OnEnable()
     {
