@@ -8,28 +8,30 @@ public class ChangeDayNight : MonoBehaviour
 
     public Material m_sky;
     private float m_exposure = 1.33f;
-    void Start()
+
+    private void OnEnable()
     {
-        m_exposure = 1.33f;
         RenderSettings.skybox = m_sky;
+        CustomEventManager.Instance.StartListening(CustomEventConstant.s_ToDayTime, ToDayTime);
+        CustomEventManager.Instance.StartListening(CustomEventConstant.s_ToNight, ToNight);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow) & m_exposure <1.33)
-        {
-            m_exposure += 0.1f;
-            RenderSettings.skybox.SetFloat("_Exposure", m_exposure);
-            //RenderSettings.skybox.
-        }
+        CustomEventManager.Instance.StopListening(CustomEventConstant.s_ToDayTime, ToDayTime);
+        CustomEventManager.Instance.StopListening(CustomEventConstant.s_ToNight, ToNight);
+    }
 
-        if (Input.GetKeyDown(KeyCode.DownArrow) & m_exposure > 0)
-        {
-            m_exposure -= 0.1f;
-            RenderSettings.skybox.SetFloat("_Exposure", m_exposure);
-            //RenderSettings.skybox.
-        }
+    public void ToNight()
+    {
+        m_exposure = 0.2f;
+        RenderSettings.skybox.SetFloat("_Exposure", m_exposure);
+    }
+
+    public void ToDayTime()
+    {
+        m_exposure = 1.333f;
+        RenderSettings.skybox.SetFloat("_Exposure", m_exposure);
     }
 
     public void GettingDark()

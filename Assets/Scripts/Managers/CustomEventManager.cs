@@ -13,7 +13,7 @@ public class CustomEventManager : Singleton<CustomEventManager>
     }
 
     public void StartListening(string eventName, Action listener)
-    { 
+    {
         Delegate thisEvent;
         if (m_eventDictionary.TryGetValue(eventName, out thisEvent))
         {

@@ -2,6 +2,13 @@
 using UnityEngine;
 using System.Xml;
 
+public enum ActionType
+{
+    None,
+    Dialog,
+    Selection,
+}
+
 public class DialogDetail
 {
     public string m_dialog;
@@ -91,10 +98,8 @@ public class ActionNode
 public class DialogManager 
 {
     private Dictionary<int, DialogCollection> m_dialogCollections;
-    private int m_currentCollectionID = -1;
     private DialogCollection m_currentCollection = null;
     private int m_currentCollectionDialogID = -1;
-    private bool m_finishSelection = false;
     public DialogManager()
     {
         m_dialogCollections = new Dictionary<int, DialogCollection>();
@@ -118,7 +123,30 @@ public class DialogManager
         }
     }
 
-    public int GetNextDialog(out DialogDetail dialog, out SelectionDetail selection)
+    public ActionType GetNextDialog(out DialogDetail dialog, out SelectionDetail selection)
+    {
+        dialog = null;
+        selection = null;
+        if (m_currentCollection != null && m_currentCollection.m_actions != null &&
+            m_currentCollectionDialogID + 1 < m_currentCollection.m_actions.Count)
+        {
+            m_currentCollectionDialogID++;
+            ActionNode action = m_currentCollection.m_actions[m_currentCollectionDialogID];
+            switch (action.m_Type)
+            {
+                case "dialog":
+                    dialog = DialogDetail.ConversionFromXML(action.m_Detail);
+                    return ActionType.Dialog;
+                case "selection":
+                    selection = SelectionDetail.ConversionFromXML(action.m_Detail);
+                    return ActionType.Selection;
+            }
+        }
+       
+        return ActionType.None;
+    }
+
+    public ActionType GetCurrentDialog(out DialogDetail dialog, out SelectionDetail selection)
     {
         dialog = null;
         selection = null;
@@ -126,25 +154,23 @@ public class DialogManager
             m_currentCollectionDialogID < m_currentCollection.m_actions.Count)
         {
             ActionNode action = m_currentCollection.m_actions[m_currentCollectionDialogID];
-            m_currentCollectionDialogID++;
             switch (action.m_Type)
             {
                 case "dialog":
                     dialog = DialogDetail.ConversionFromXML(action.m_Detail);
-                    return 0;
+                    return ActionType.Dialog;
                 case "selection":
                     selection = SelectionDetail.ConversionFromXML(action.m_Detail);
-                    return 1;
+                    return ActionType.Selection;
             }
         }
-       
-        return -1;
+
+        return ActionType.None;
     }
+
     public void GetCollection(int collectionID)
     {
-        m_currentCollectionID = collectionID;
         m_currentCollection = m_dialogCollections[collectionID];
         m_currentCollectionDialogID = 0;
-        m_finishSelection = false; 
     }
 }

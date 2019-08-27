@@ -67,4 +67,16 @@ public class GameStateManager : Singleton<GameStateManager>
         ResumeGame();
     }
 
+    public void ChangeToNight()
+    {
+        DataManager.Instance.ToggleTime();
+        CustomEventManager.Instance.TriggerEvent(CustomEventConstant.s_ToNight);
+    }
+
+    public void ChangeToDayTime()
+    {
+        DataManager.Instance.ToggleTime();
+        CustomEventManager.Instance.TriggerEvent(CustomEventConstant.s_ToDayTime);
+    }
+
 }
