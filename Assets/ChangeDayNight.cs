@@ -7,7 +7,7 @@ public class ChangeDayNight : MonoBehaviour
     // Start is called before the first frame update
 
     public Material m_sky;
-    float m_exposure = 1.33f;
+    private float m_exposure = 1.33f;
     void Start()
     {
         m_exposure = 1.33f;
