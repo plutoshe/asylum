@@ -48,7 +48,7 @@ public class GameStateManager : Singleton<GameStateManager>
         CustomEventManager.Instance.TriggerEvent(GuiEventConstant.s_CloseExamine);
     }
 
-    public void ShowDialog(int collectionID, Camera viewCamera)
+    public void ShowDialog(string collectionID, Camera viewCamera)
     {
         PauseGame();
         m_oldCameraPosition = Camera.main.transform.position;

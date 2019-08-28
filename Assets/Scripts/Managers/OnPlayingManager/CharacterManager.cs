@@ -26,6 +26,26 @@ public class CharacterManager : MonoBehaviour
         CustomEventManager.Instance.StartListening(CustomEventConstant.s_ToNight, SetNight);
     }
 
+    private void OnDisable()
+    {
+        CustomEventManager.Instance.StopListening(CustomEventConstant.s_ToDayTime, SetDayTime);
+        CustomEventManager.Instance.StopListening(CustomEventConstant.s_ToNight, SetNight);
+    }
+
+    private void OnDestroy()
+    {
+        for (int i = 0; i < m_dailyTimeCharacters.Count; i++)
+        {
+            Destroy(m_dailyTimeCharacters[i]);
+        }
+        for (int i = 0; i < m_nightCharacters.Count; i++)
+        {
+            Destroy(m_nightCharacters[i]);
+        }
+        m_dailyTimeCharacters.Clear();
+        m_nightCharacters.Clear();
+    }
+
     private void Awake()
     {
         m_dailyTimeCharacters = transform.FindDeepChildren("Character", HasString);

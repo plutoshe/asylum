@@ -20,7 +20,7 @@ public class DataManager : Singleton<DataManager>
         m_dialog.Load("Assets/Resources/Data/dialog_test.xml");
     }
 
-    public void GetCollection(int collectionID)
+    public void GetCollection(string collectionID)
     {
         m_dialog.GetCollection(collectionID);
     }

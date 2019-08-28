@@ -97,12 +97,12 @@ public class ActionNode
 
 public class DialogManager 
 {
-    private Dictionary<int, DialogCollection> m_dialogCollections;
+    private Dictionary<string, DialogCollection> m_dialogCollections;
     private DialogCollection m_currentCollection = null;
     private int m_currentCollectionDialogID = -1;
     public DialogManager()
     {
-        m_dialogCollections = new Dictionary<int, DialogCollection>();
+        m_dialogCollections = new Dictionary<string, DialogCollection>();
     }
     public void Load(string xmlFileName)
     {
@@ -119,7 +119,7 @@ public class DialogManager
             {
                 newDialogCollection.m_actions.Add(new ActionNode(dialogList[dialogID].Name, dialogList[dialogID]));
             }
-            m_dialogCollections.Add(int.Parse(nodes[i].Attributes["id"].Value), newDialogCollection);
+            m_dialogCollections.Add(nodes[i].Attributes["id"].Value, newDialogCollection);
         }
     }
 
@@ -168,9 +168,12 @@ public class DialogManager
         return ActionType.None;
     }
 
-    public void GetCollection(int collectionID)
+    public void GetCollection(string collectionID)
     {
-        m_currentCollection = m_dialogCollections[collectionID];
-        m_currentCollectionDialogID = 0;
+        if (m_dialogCollections.TryGetValue(collectionID, out m_currentCollection))
+        {
+            m_currentCollection = m_dialogCollections[collectionID];
+            m_currentCollectionDialogID = 0;
+        }
     }
 }

@@ -42,17 +42,17 @@ public class DialogGuiManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            DataManager.Instance.GetCollection(3);
+            DataManager.Instance.GetCollection("3");
             UpdateDialog();
         }
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            DataManager.Instance.GetCollection(1);
+            DataManager.Instance.GetCollection("1");
             UpdateDialog();
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            DataManager.Instance.GetCollection(2);
+            DataManager.Instance.GetCollection("2");
             UpdateDialog();
         }
     }
