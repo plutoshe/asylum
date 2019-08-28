@@ -8,10 +8,12 @@ public class DialogGuiManager : MonoBehaviour
     public Text m_Dialog;
     private DialogDetail m_GameDialog;
     private SelectionDetail m_GameSelections;
+    private bool m_isFirstFrame;
 
     private void OnEnable()
     {
         ActionType itemType = DataManager.Instance.GetCurrentDialog(out m_GameDialog, out m_GameSelections);
+        m_isFirstFrame = true;
         UpdateUI(itemType);
     }
 
@@ -35,24 +37,24 @@ public class DialogGuiManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (!m_isFirstFrame && Input.GetMouseButtonDown(0))
         {
             UpdateDialog();
         }
-
+        m_isFirstFrame = false;
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            DataManager.Instance.GetCollection(3);
+            DataManager.Instance.GetCollection("3");
             UpdateDialog();
         }
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            DataManager.Instance.GetCollection(1);
+            DataManager.Instance.GetCollection("1");
             UpdateDialog();
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            DataManager.Instance.GetCollection(2);
+            DataManager.Instance.GetCollection("2");
             UpdateDialog();
         }
     }

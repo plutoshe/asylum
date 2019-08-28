@@ -12,6 +12,11 @@ public class CustomEventManager : Singleton<CustomEventManager>
         m_eventDictionary = new Dictionary<string, Delegate>();
     }
 
+    public void OnDestroy()
+    {
+        m_eventDictionary.Clear();
+    }
+
     public void StartListening(string eventName, Action listener)
     {
         Delegate thisEvent;
@@ -57,12 +62,15 @@ public class CustomEventManager : Singleton<CustomEventManager>
         Delegate thisEvent;
         if (m_eventDictionary.TryGetValue(eventName, out thisEvent))
         {
-            //Remove event from the existing one
-            Action thisAction = thisEvent as Action;
-            thisAction -= listener;
+            if (thisEvent != null)
+            {
+                //Remove event from the existing one
+                Action thisAction = thisEvent as Action;
+                thisAction -= listener;
 
-            //Update the Dictionary
-            Instance.m_eventDictionary[eventName] = thisAction;
+                //Update the Dictionary
+                Instance.m_eventDictionary[eventName] = thisAction;
+            }
         }
     }
     public void StopListening<T>(string eventName, Action<T> listener)
@@ -70,12 +78,15 @@ public class CustomEventManager : Singleton<CustomEventManager>
         Delegate thisEvent;
         if (m_eventDictionary.TryGetValue(eventName, out thisEvent))
         {
-            //Remove event from the existing one
-            Action<T> thisAction = thisEvent as Action<T>;
-            thisAction -= listener;
+            if (thisEvent != null)
+            {
+                //Remove event from the existing one
+                Action<T> thisAction = thisEvent as Action<T>;
+                thisAction -= listener;
 
-            //Update the Dictionary
-            Instance.m_eventDictionary[eventName] = thisAction;
+                //Update the Dictionary
+                Instance.m_eventDictionary[eventName] = thisAction;
+            }
         }
     }
 
