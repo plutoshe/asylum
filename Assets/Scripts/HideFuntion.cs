@@ -2,37 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HideFuntion : MonoBehaviour
+public class HideFuntion : Interactable
 {
     // Start is called before the first frame update
-    public GameObject m_MainCam;
+    private Vector3 m_oldCameraPosition;
+    private Quaternion m_oldCameraRotation;
     public GameObject m_HideCam;
     public Animator m_MonsterMove;
 
 
-    void Start()
+    void Awake()
     {
-        m_MainCam.SetActive(true);
         m_HideCam.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            m_MainCam.SetActive(false);
-            m_HideCam.SetActive(true);
-            m_MonsterMove.SetBool("MonsterMoveStart", true);
-            
-        }
-        else if(Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            m_MainCam.SetActive(true);
-            m_HideCam.SetActive(false);
-            m_MonsterMove.SetBool("MonsterMoveStart", false);
+            Camera.main.transform.position = m_oldCameraPosition;
+            Camera.main.transform.rotation = m_oldCameraRotation;
+            //m_MonsterMove.SetBool("MonsterMoveStart", false);
+            GameStateManager.Instance.GetOutOfBed();
         }
     }
 
-  
+    public override void Interact()
+    {
+        m_oldCameraPosition = Camera.main.transform.position;
+        m_oldCameraRotation = Camera.main.transform.rotation;
+        Camera.main.transform.position = m_HideCam.transform.position;
+        Camera.main.transform.rotation = m_HideCam.transform.rotation;
+        //m_MonsterMove.SetBool("MonsterMoveStart", true);
+        GameStateManager.Instance.HideUnderBed();
+    }
 }

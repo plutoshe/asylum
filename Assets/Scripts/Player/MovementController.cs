@@ -28,6 +28,7 @@ public class MovementController : MonoBehaviour
     {
         float translation;
         float straffe;
+        DataManager.Instance.UpdatePlayerPosition(transform.position);
 
         if (!GameStateManager.Instance.IsPaused())
         {

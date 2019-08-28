@@ -45,6 +45,28 @@ public class DataManager : Singleton<DataManager>
         return m_playerStatus.m_IdentityID;
     }
 
+    public Vector3 CurrentPlayerPosition
+    {
+        get {
+            return m_playerStatus.m_Position;
+        }
+    }
+
+    public bool IsPlayerHide()
+    {
+        return m_playerStatus.m_IsHide;
+    }
+
+    public void ChangePlayerHideStatus(bool hide)
+    {
+        m_playerStatus.m_IsHide = hide;
+    }
+
+    public void UpdatePlayerPosition(Vector3 updatePosition)
+    {
+        m_playerStatus.m_Position = updatePosition;
+    }
+
     public bool IsDayTime()
     {
         return m_playerStatus.m_Time == 0;
