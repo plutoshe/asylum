@@ -153,4 +153,24 @@ public class Inventory : Singleton<Inventory>
         }
         return false;
     }
+
+    public bool ContainedInInventory(GameObject item)
+    {
+        for (int i = 0; i < m_itemList.Length; i++)
+        {
+            if (m_itemList[i].Equals(item))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void ChangeSlotImage(int slotNum, Image newImage)
+    {
+        if(slotNum <= m_itemImages.Length)
+        {
+            m_itemImages[slotNum] = newImage;
+        }
+    }
 }
