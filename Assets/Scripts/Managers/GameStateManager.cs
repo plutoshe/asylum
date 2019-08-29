@@ -79,4 +79,22 @@ public class GameStateManager : Singleton<GameStateManager>
         CustomEventManager.Instance.TriggerEvent(CustomEventConstant.s_ToDayTime);
     }
 
+    public void HideUnderBed()
+    {
+        PauseGame();
+        DataManager.Instance.ChangePlayerHideStatus(true);
+    }
+
+    public void GetOutOfBed()
+    {
+        ResumeGame();
+        DataManager.Instance.ChangePlayerHideStatus(false);
+    }
+
+    public void GameOver()
+    {
+        PauseGame();
+        print("GameOver");
+    }
+
 }
