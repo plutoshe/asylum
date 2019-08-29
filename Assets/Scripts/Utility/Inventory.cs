@@ -113,6 +113,12 @@ public class Inventory : Singleton<Inventory>
         {
             print(Input.GetAxis("Vertical"));
             print("rotspeed" + ROTSPEED);
+            print(GameStateManager.Instance.IsPaused());
+            print(m_item.name);
+            if (Input.GetAxis("Vertical") > 0.5f)
+            {
+                int i = 0;
+            }
             m_item.transform.Rotate(Input.GetAxis("Vertical")* ROTSPEED, 0.0f, 0.0f,Space.Self);
             m_item.transform.Rotate(0.0f,Input.GetAxis("Horizontal")* ROTSPEED, 0.0f, Space.World);
         }
