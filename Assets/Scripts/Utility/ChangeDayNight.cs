@@ -9,6 +9,10 @@ public class ChangeDayNight : MonoBehaviour
     public Material m_sky;
     private float m_exposure = 1.33f;
 
+    public void Awake()
+    {
+        ToDayTime();
+    }
     private void OnEnable()
     {
         RenderSettings.skybox = m_sky;

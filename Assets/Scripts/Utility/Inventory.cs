@@ -111,8 +111,10 @@ public class Inventory : Singleton<Inventory>
     {
         if(m_isExaminig)
         {
-            print(Input.GetAxis("Vertical"));
-            print("rotspeed" + ROTSPEED);
+            if (Input.GetAxis("Vertical") > 0.5f)
+            {
+                int i = 0;
+            }
             m_item.transform.Rotate(Input.GetAxis("Vertical")* ROTSPEED, 0.0f, 0.0f,Space.Self);
             m_item.transform.Rotate(0.0f,Input.GetAxis("Horizontal")* ROTSPEED, 0.0f, Space.World);
         }
@@ -160,11 +162,15 @@ public class Inventory : Singleton<Inventory>
         return false;
     }
 
-    public void ChangeSlotImage(int slotNum, Image newImage)
+    public void ChangeSlotImage(int slotNum, Sprite newImage, Material newMat = null)
     {
         if(slotNum <= m_itemImages.Length)
         {
-            m_itemImages[slotNum] = newImage;
+            m_itemImages[slotNum].sprite = newImage;
+            if (newMat != null)
+            {
+                m_itemImages[slotNum].material = newMat;
+            }
         }
     }
 }
