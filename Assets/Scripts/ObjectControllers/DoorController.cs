@@ -10,7 +10,15 @@ public class DoorController : Interactable
 
     void Start()
     {
-        m_anim = gameObject.GetComponent<Animator>();
+        if(gameObject.GetComponentInParent<Animator>() != null)
+        {
+            m_anim = gameObject.GetComponentInParent<Animator>();
+        }
+        else
+        {
+          m_anim = gameObject.GetComponent<Animator>();
+        }
+
 
         if(m_key != null)
         {
