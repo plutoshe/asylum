@@ -120,9 +120,9 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &444987118 stripped
+--- !u!114 &469984620 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3046504642167819390, guid: b2531e4daf96fb147b3c20bf76eab640,
+  m_CorrespondingSourceObject: {fileID: 8435633772228810911, guid: b2531e4daf96fb147b3c20bf76eab640,
     type: 3}
   m_PrefabInstance: {fileID: 1291629393}
   m_PrefabAsset: {fileID: 0}
@@ -339,7 +339,7 @@ PrefabInstance:
     - target: {fileID: 3046504642644088816, guid: b2531e4daf96fb147b3c20bf76eab640,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3046504642644088816, guid: b2531e4daf96fb147b3c20bf76eab640,
         type: 3}
@@ -389,22 +389,22 @@ PrefabInstance:
     - target: {fileID: 3046504642644088816, guid: b2531e4daf96fb147b3c20bf76eab640,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3046504642644088816, guid: b2531e4daf96fb147b3c20bf76eab640,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3046504642644088816, guid: b2531e4daf96fb147b3c20bf76eab640,
         type: 3}
       propertyPath: m_Pivot.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3046504642644088816, guid: b2531e4daf96fb147b3c20bf76eab640,
         type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2531e4daf96fb147b3c20bf76eab640, type: 3}
@@ -478,7 +478,7 @@ PrefabInstance:
     - target: {fileID: 1618951691, guid: 354b27ce1cd195e4fa755ebd2b15f727, type: 3}
       propertyPath: m_reticle
       value: 
-      objectReference: {fileID: 444987118}
+      objectReference: {fileID: 469984620}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 354b27ce1cd195e4fa755ebd2b15f727, type: 3}
 --- !u!1001 &5049995225501164467
@@ -600,7 +600,7 @@ PrefabInstance:
     - target: {fileID: 737222882765343328, guid: fdc3673c9ba0d294786262a80b09e57d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 737222882765343328, guid: fdc3673c9ba0d294786262a80b09e57d,
         type: 3}
