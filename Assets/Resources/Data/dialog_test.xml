@@ -10,7 +10,24 @@
     </selection>
     <dialog text="collection1_sentence3"/>
   </collection>
-
+  <collection id="patientNPC_PlayerDocter">
+    <dialog text="Save me"/>
+  </collection>
+  <collection id="patientNPC_PlayerSecurity">
+    <dialog text="What did I do wrong now?"/>
+  </collection>
+  <collection id="docterNPC_PlayerDocter">
+    <dialog text="Hmm. Strange. Haven’t seen you around before."/>
+  </collection>
+  <collection id="docterNPC_PlayerSecurity">
+    <dialog text="Take care of those patients, will ya?"/>
+  </collection>
+  <collection id="securityNPC_PlayerDocter">
+    <dialog text="All patients are coordinating."/>
+  </collection>
+  <collection id="securityNPC_PlayerSecurity">
+    <dialog text="Officer, have I seen you before?"/>
+  </collection>
   <collection id="2">
     <dialog text="collection2_sentence1"/>
     <dialog text="collection2_sentence2"/>
