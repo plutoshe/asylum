@@ -18,6 +18,7 @@ public static class CustomEventConstant
 {
     public static string s_ToDayTime = "ToDayTime";
     public static string s_ToNight = "ToNight";
+    public static string s_ShowMonster = "ShowMonster";
 }
 
 public static class CameraEventConstant

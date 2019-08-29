@@ -13,15 +13,16 @@ public class KeyShining : MonoBehaviour
     private void Awake()
     {
         m_isShining = false;
-    }
-    private void OnEnable()
-    {
         CustomEventManager.Instance.StartListening(CustomEventConstant.s_ToNight, nightChange);
+    }
+
+    private void OnDestroy()
+    {
+        CustomEventManager.Instance.StopListening(CustomEventConstant.s_ToNight, nightChange);
     }
 
     private void OnDisable()
     {
-        CustomEventManager.Instance.StopListening(CustomEventConstant.s_ToNight, nightChange);
         var collectableItem = GetComponent<Collectible>();
         if (collectableItem.m_hasBeenInspected && m_isShining)
         {
