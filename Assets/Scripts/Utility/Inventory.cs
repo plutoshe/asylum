@@ -111,6 +111,8 @@ public class Inventory : Singleton<Inventory>
     {
         if(m_isExaminig)
         {
+            print(Input.GetAxis("Vertical"));
+            print("rotspeed" + ROTSPEED);
             m_item.transform.Rotate(Input.GetAxis("Vertical")* ROTSPEED, 0.0f, 0.0f,Space.Self);
             m_item.transform.Rotate(0.0f,Input.GetAxis("Horizontal")* ROTSPEED, 0.0f, Space.World);
         }
