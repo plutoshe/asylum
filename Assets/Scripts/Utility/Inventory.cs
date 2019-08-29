@@ -111,10 +111,6 @@ public class Inventory : Singleton<Inventory>
     {
         if(m_isExaminig)
         {
-            print(Input.GetAxis("Vertical"));
-            print("rotspeed" + ROTSPEED);
-            print(GameStateManager.Instance.IsPaused());
-            print(m_item.name);
             if (Input.GetAxis("Vertical") > 0.5f)
             {
                 int i = 0;
@@ -166,11 +162,15 @@ public class Inventory : Singleton<Inventory>
         return false;
     }
 
-    public void ChangeSlotImage(int slotNum, Image newImage)
+    public void ChangeSlotImage(int slotNum, Sprite newImage, Material newMat = null)
     {
         if(slotNum <= m_itemImages.Length)
         {
-            m_itemImages[slotNum] = newImage;
+            m_itemImages[slotNum].sprite = newImage;
+            if (newMat != null)
+            {
+                m_itemImages[slotNum].material = newMat;
+            }
         }
     }
 }

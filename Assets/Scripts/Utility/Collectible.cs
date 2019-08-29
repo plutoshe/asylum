@@ -24,6 +24,11 @@ public class Collectible : Interactable
         return m_inventoryImage;
     }
 
+    public void SetImage(Sprite newImage)
+    {
+        m_inventoryImage = newImage;
+    }
+
     public void SetSlot(int slot)
     {
         m_slot = slot;
