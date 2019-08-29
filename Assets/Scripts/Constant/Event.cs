@@ -10,6 +10,7 @@ public static class GuiEventConstant
     public static string s_CloseExamine = "CloseExamine";
     public static string s_DialogDemonstration = "DialogDemonstration";
     public static string s_DialogClose = "DialogClose";
+    public static string s_GameOver = "GameOver";
 
 }
 

@@ -111,10 +111,6 @@ public class Inventory : Singleton<Inventory>
     {
         if(m_isExaminig)
         {
-            if (Input.GetAxis("Vertical") > 0.5f)
-            {
-                int i = 0;
-            }
             m_item.transform.Rotate(Input.GetAxis("Vertical")* ROTSPEED, 0.0f, 0.0f,Space.Self);
             m_item.transform.Rotate(0.0f,Input.GetAxis("Horizontal")* ROTSPEED, 0.0f, Space.World);
         }
@@ -154,7 +150,7 @@ public class Inventory : Singleton<Inventory>
     {
         for (int i = 0; i < m_itemList.Length; i++)
         {
-            if (m_itemList[i].Equals(item))
+            if (m_itemList[i] != null && m_itemList[i].Equals(item))
             {
                 return true;
             }

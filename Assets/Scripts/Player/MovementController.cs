@@ -37,7 +37,6 @@ public class MovementController : MonoBehaviour
                 translation = Input.GetAxis("Vertical") * m_runSpeed * Time.deltaTime;
                 straffe = Input.GetAxis("Horizontal") * m_runSpeed * Time.deltaTime;
                 DepleteStamina(m_staminaExpense);
-                Debug.Log(m_stamina);
             }
             else
             {
