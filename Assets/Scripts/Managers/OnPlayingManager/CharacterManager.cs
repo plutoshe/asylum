@@ -24,12 +24,14 @@ public class CharacterManager : MonoBehaviour
         }
         CustomEventManager.Instance.StartListening(CustomEventConstant.s_ToDayTime, SetDayTime);
         CustomEventManager.Instance.StartListening(CustomEventConstant.s_ToNight, SetNight);
+        CustomEventManager.Instance.StartListening(CustomEventConstant.s_ShowMonster, ShowMonster);
     }
 
     private void OnDisable()
     {
         CustomEventManager.Instance.StopListening(CustomEventConstant.s_ToDayTime, SetDayTime);
         CustomEventManager.Instance.StopListening(CustomEventConstant.s_ToNight, SetNight);
+        CustomEventManager.Instance.StopListening(CustomEventConstant.s_ShowMonster, ShowMonster);
     }
 
     private void OnDestroy()
@@ -70,6 +72,10 @@ public class CharacterManager : MonoBehaviour
         {
             m_dailyTimeCharacters[i].gameObject.SetActive(false);
         }
+    }
+
+    public void ShowMonster()
+    {
         for (int i = 0; i < m_nightCharacters.Count; i++)
         {
             m_nightCharacters[i].gameObject.SetActive(true);

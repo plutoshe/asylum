@@ -15,7 +15,7 @@ public class DataManager : Singleton<DataManager>
         m_dialog = new DialogManager();
     }
 
-    private void Awake()
+    private void OnEnable()
     {
         m_dialog.Load("Assets/Resources/Data/dialog_test.xml");
     }

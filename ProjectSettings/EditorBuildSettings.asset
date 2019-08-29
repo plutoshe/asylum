@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LuisDev.unity
     guid: 1861da7e3198b5940a2cb95670b664d7
+  - enabled: 1
+    path: Assets/Scenes/RewantNPC.unity
+    guid: dde1f546ebfbccc489b0d4ed24cac3c4
   m_configObjects: {}
