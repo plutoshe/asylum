@@ -9,6 +9,12 @@ public class Collectible : Interactable
     [SerializeField] bool m_rescale = false;
     [SerializeField] Vector3 m_newScale = new Vector3(0,0,0);
     private int m_slot = 5;
+    public bool m_hasBeenInspected;
+
+    private void Awake()
+    {
+        m_hasBeenInspected = false;
+    }
 
     public override void Interact()
     {

@@ -43,6 +43,7 @@ public class Inventory : Singleton<Inventory>
         {
             InitilizeExamine();
             m_item = m_itemList[0];
+            m_item.GetComponent<Collectible>().m_hasBeenInspected = true;
             m_item.transform.rotation = Camera.main.transform.rotation;
             m_item.SetActive(true);
         }
@@ -50,6 +51,7 @@ public class Inventory : Singleton<Inventory>
         {
             InitilizeExamine();
             m_item = m_itemList[1];
+            m_item.GetComponent<Collectible>().m_hasBeenInspected = true;
             m_item.transform.rotation = Camera.main.transform.rotation;
             m_item.SetActive(true);
         }
@@ -57,6 +59,7 @@ public class Inventory : Singleton<Inventory>
         {
             InitilizeExamine();
             m_item = m_itemList[2];
+            m_item.GetComponent<Collectible>().m_hasBeenInspected = true;
             m_item.transform.rotation = Camera.main.transform.rotation;
             m_item.SetActive(true);
         }
@@ -64,6 +67,7 @@ public class Inventory : Singleton<Inventory>
         {
             InitilizeExamine();
             m_item = m_itemList[3];
+            m_item.GetComponent<Collectible>().m_hasBeenInspected = true;
             m_item.transform.rotation = Camera.main.transform.rotation;
             m_item.SetActive(true);
         }
@@ -163,10 +167,7 @@ public class Inventory : Singleton<Inventory>
         if(slotNum <= m_itemImages.Length)
         {
             m_itemImages[slotNum].sprite = newImage;
-            if (newMat != null)
-            {
-                m_itemImages[slotNum].material = newMat;
-            }
+            m_itemImages[slotNum].material = newMat;
         }
     }
 }

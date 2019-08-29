@@ -28,30 +28,34 @@ public class MonsterReaction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        m_timeLostInSight += Time.deltaTime;
-        if (!DataManager.Instance.IsPlayerHide() && Vector3.Distance(DataManager.Instance.CurrentPlayerPosition, transform.position) <= m_SenseDistance)
+        if (!GameStateManager.Instance.IsPaused())
         {
-            if (Vector3.Distance(DataManager.Instance.CurrentPlayerPosition, transform.position) < 1f)
+            m_timeLostInSight += Time.deltaTime;
+            if (!DataManager.Instance.IsPlayerHide() && Vector3.Distance(DataManager.Instance.CurrentPlayerPosition, transform.position) <= m_SenseDistance)
             {
-                GameStateManager.Instance.GameOver();
+                if (Vector3.Distance(DataManager.Instance.CurrentPlayerPosition, transform.position) < 1f)
+                {
+                    GameStateManager.Instance.GameOver();
+                }
+                if (NoColliderAtPath(DataManager.Instance.CurrentPlayerPosition, transform.position))
+                {
+                    m_timeLostInSight = 0;
+                    m_onGoingChasingPosition = DataManager.Instance.CurrentPlayerPosition;
+                    transform.LookAt(DataManager.Instance.CurrentPlayerPosition);
+                    Vector3 oldRoration = transform.rotation.eulerAngles;
+                    transform.rotation = Quaternion.Euler(90, oldRoration.y, oldRoration.z);
+
+
+                }
             }
-            if (NoColliderAtPath(DataManager.Instance.CurrentPlayerPosition, transform.position))
+            if (m_timeLostInSight < m_stayChasingTime)
             {
-                m_timeLostInSight = 0;
-                m_onGoingChasingPosition = DataManager.Instance.CurrentPlayerPosition;
-                transform.LookAt(DataManager.Instance.CurrentPlayerPosition);
-                Vector3 oldRoration = transform.rotation.eulerAngles;
-                transform.rotation = Quaternion.Euler(90, oldRoration.y, oldRoration.z);
-
-
-            } 
-        }
-        if (m_timeLostInSight < m_stayChasingTime)
-        {
-            transform.position += m_speed * (Time.deltaTime / 1) * (m_onGoingChasingPosition - transform.position).normalized;
-        } else
-        {
-            transform.position += m_speed * (Time.deltaTime / 1) * (m_waitPosition - transform.position).normalized;
+                transform.position += m_speed * (Time.deltaTime / 1) * (m_onGoingChasingPosition - transform.position).normalized;
+            }
+            else
+            {
+                transform.position += m_speed * (Time.deltaTime / 1) * (m_waitPosition - transform.position).normalized;
+            }
         }
     }
 }

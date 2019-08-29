@@ -8,6 +8,12 @@ public class KeyShining : MonoBehaviour
     public Sprite m_NewKey;
     public Sprite m_GlowKey;
     public Material m_ShiningEffect;
+    private bool m_isShining;
+
+    private void Awake()
+    {
+        m_isShining = false;
+    }
     private void OnEnable()
     {
         CustomEventManager.Instance.StartListening(CustomEventConstant.s_ToNight, nightChange);
@@ -16,9 +22,14 @@ public class KeyShining : MonoBehaviour
     private void OnDisable()
     {
         CustomEventManager.Instance.StopListening(CustomEventConstant.s_ToNight, nightChange);
+        var collectableItem = GetComponent<Collectible>();
+        if (collectableItem.m_hasBeenInspected && m_isShining)
+        {
+            Inventory.Instance.ChangeSlotImage(collectableItem.GetSlot(), m_NewKey, null);
+        }
     }
 
-    private void nightChange()
+    private void StartShining()
     {
         var collectableItem = GetComponent<Collectible>();
         GetComponent<SpriteRenderer>().sprite = m_NewKey;
@@ -26,7 +37,13 @@ public class KeyShining : MonoBehaviour
         m_ShiningEffect.SetTexture("_GlowTex", m_GlowKey.texture);
         //GetComponent<SpriteRenderer>().material = m_ShiningEffect;
         collectableItem.SetImage(m_NewKey);
+        m_isShining = true;
 
         Inventory.Instance.ChangeSlotImage(collectableItem.GetSlot(), m_NewKey, m_ShiningEffect);
+    }
+
+    private void nightChange()
+    {
+        StartShining();
     }
 }

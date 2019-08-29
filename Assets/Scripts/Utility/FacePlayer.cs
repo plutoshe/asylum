@@ -5,6 +5,13 @@ using UnityEngine;
 public class FacePlayer : MonoBehaviour
 {
     private GameObject m_player;
+    public Vector3 FixedOriginRotation;
+    private Vector3 InitialEulerAngle;
+
+    private void Awake()
+    {
+        InitialEulerAngle = transform.rotation.eulerAngles;
+    }
 
     void Start()
     {
@@ -15,5 +22,14 @@ public class FacePlayer : MonoBehaviour
     void Update()
     {
         gameObject.transform.LookAt(m_player.transform);
+        Vector3 newEuler = gameObject.transform.rotation.eulerAngles;
+        for (int i = 0; i < 3; i++)
+        {
+            if (FixedOriginRotation[i] != 0)
+            {
+                newEuler[i] = InitialEulerAngle[i];
+            }
+        }
+        gameObject.transform.rotation = Quaternion.Euler(newEuler);
     }
 }
