@@ -56,18 +56,18 @@ public class IdentityGuiManager : MonoBehaviour
         // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
         {
             SelectFemaleEffect();
             DataManager.Instance.ChangeIdentity(1);
 
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
         {
             SelectMaleEffect();
             DataManager.Instance.ChangeIdentity(2);
         }
-        else if (Input.GetKeyDown(KeyCode.Return))
+        else if (Input.GetMouseButtonDown(1))
         {
             GameStateManager.Instance.BackToPlaying();
         }

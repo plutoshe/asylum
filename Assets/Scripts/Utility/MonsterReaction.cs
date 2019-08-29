@@ -46,7 +46,7 @@ public class MonsterReaction : MonoBehaviour
             m_timeLostInSight += Time.deltaTime;
             if (!DataManager.Instance.IsPlayerHide() && Vector3.Distance(DataManager.Instance.CurrentPlayerPosition, transform.position) <= m_SenseDistance)
             {
-                if (Vector3.Distance(DataManager.Instance.CurrentPlayerPosition, transform.position) < 1f)
+                if (Vector3.Distance(DataManager.Instance.CurrentPlayerPosition, transform.position) < .5f)
                 {
                     GameStateManager.Instance.GameOver();
                 }
