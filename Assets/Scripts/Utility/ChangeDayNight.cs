@@ -56,15 +56,5 @@ public class ChangeDayNight : MonoBehaviour
         }
     }
 
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            ToNight();
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            ToDayTime();
-        }
-    }
+
 }
