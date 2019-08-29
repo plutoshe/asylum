@@ -22,7 +22,20 @@ public class MonsterReaction : MonoBehaviour
     {
         toPosition.y += 1f;
         originPosition.y += 1f;
-        return Physics.Raycast(originPosition, toPosition, Vector3.Distance(toPosition, originPosition));       
+        RaycastHit hit;
+        Ray ray = new Ray(originPosition, toPosition - originPosition);
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (hit.collider != null)
+            {
+                if (hit.collider.gameObject.tag == "Player")
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+        //return Physics.Raycast(originPosition, toPosition, Vector3.Distance(toPosition, originPosition));       
     }
 
     // Update is called once per frame
