@@ -94,7 +94,7 @@ public class GameStateManager : Singleton<GameStateManager>
     public void GameOver()
     {
         PauseGame();
-        print("GameOver");
+        CustomEventManager.Instance.TriggerEvent(GuiEventConstant.s_GameOver);
     }
 
 }

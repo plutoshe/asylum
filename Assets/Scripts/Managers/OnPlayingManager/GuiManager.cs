@@ -7,6 +7,7 @@ public class GuiManager : MonoBehaviour
     public GameObject IdentityGui;
     public GameObject PlayingGui;
     public GameObject DialogGui;
+    public GameObject GameOverGui;
     public void OnEnable()
     {
         CustomEventManager.Instance.StartListening(GuiEventConstant.s_DialogDemonstration, OpenDialog);
@@ -15,6 +16,7 @@ public class GuiManager : MonoBehaviour
         CustomEventManager.Instance.StartListening(GuiEventConstant.s_IdentityChange, IdentityGuiDemonstration);
         CustomEventManager.Instance.StartListening(GuiEventConstant.s_OpenExamine, OpenExamineGui);
         CustomEventManager.Instance.StartListening(GuiEventConstant.s_CloseExamine, CloseExamineGui);
+        CustomEventManager.Instance.StartListening(GuiEventConstant.s_GameOver, GameOverDemonstration);
     }
 
     public void OnDisable()
@@ -25,6 +27,12 @@ public class GuiManager : MonoBehaviour
         CustomEventManager.Instance.StopListening(GuiEventConstant.s_IdentityChange, IdentityGuiDemonstration);
         CustomEventManager.Instance.StopListening(GuiEventConstant.s_OpenExamine, OpenExamineGui);
         CustomEventManager.Instance.StopListening(GuiEventConstant.s_CloseExamine, CloseExamineGui);
+        CustomEventManager.Instance.StopListening(GuiEventConstant.s_GameOver, GameOverDemonstration);
+    }
+
+    public void Awake()
+    {
+        GameOverGui.SetActive(false);
     }
 
     public void IdentityGuiDemonstration()
@@ -67,5 +75,13 @@ public class GuiManager : MonoBehaviour
         DialogGui.SetActive(false);
         IdentityGui.SetActive(false);
         PlayingGui.SetActive(true);
+    }
+
+    public void GameOverDemonstration()
+    {
+        DialogGui.SetActive(false);
+        IdentityGui.SetActive(false);
+        PlayingGui.SetActive(false);
+        GameOverGui.SetActive(true);
     }
 }
