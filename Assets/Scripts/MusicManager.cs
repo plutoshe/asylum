@@ -13,7 +13,10 @@ public class MusicManager : Singleton<MusicManager>
 
     public void ChangeBGMusic(AudioClip clip)
     {
-        source.clip = clip;
-        source.Play();
+        if (!source.clip.Equals(clip))
+        {
+            source.clip = clip;
+            source.Play();
+        }
     }
 }
