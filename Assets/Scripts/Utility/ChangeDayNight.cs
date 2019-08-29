@@ -51,4 +51,16 @@ public class ChangeDayNight : MonoBehaviour
             RenderSettings.skybox.SetFloat("_Exposure", m_exposure);
         }
     }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            ToNight();
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            ToDayTime();
+        }
+    }
 }
