@@ -1,6 +1,6 @@
 <!-- ensure selection is the end tag of the collection -->
 <flow>
-  <collction id="1">
+  <collection id="1">
     <dialog text="collection1_sentence1"/>
     <dialog text="collection1_sentence2"/>
     <selection>
@@ -9,18 +9,24 @@
         <!-- <item text="choose 3" id="3"/> -->
     </selection>
     <dialog text="collection1_sentence3"/>
-  </collction>
+  </collection>
 
-  <collction id="2">
+  <collection id="2">
     <dialog text="collection2_sentence1"/>
     <dialog text="collection2_sentence2"/>
     <selection>
         <item text="choose 1" id="1"/>
         <item text="choose 3" id="3"/>
     </selection>
-  </collction>
-  <collction id="3">
+  </collection>
+  <collection id="3">
     <dialog text="collection3_sentence1"/>
     <dialog text="collection3_sentence2"/>
-  </collction>
+  </collection>
+  <collection id="test1">
+    <dialog text="test1_sentence1"/>
+  </collection>
+  <collection id="test2">
+    <dialog text="test2_sentence1"/>
+  </collection>
 </flow>
