@@ -74,12 +74,12 @@ public class Inventory : Singleton<Inventory>
         else if (Input.GetMouseButtonDown(0) && m_isExaminig && m_item.GetComponent<Consumable>() != null && m_item.GetComponent<Consumable>().CanConsume())
         {
             int tempSlot = m_item.GetComponent<Collectible>().GetSlot();
-            m_item.GetComponent<Consumable>().Use();
             m_item.GetComponent<Consumable>().Consume();
-
-            if (m_item == null)
-            {
+            
+            if (!m_item.GetComponent<Consumable>().CanConsume())
+            {              
                 m_itemImages[tempSlot].enabled = false;
+                Destroy(m_item);
                 EndExamine();
             }
         }

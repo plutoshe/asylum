@@ -32,12 +32,7 @@ public class Consumable : Collectible
 
     public void Use()
     {
-        m_uses--;
-
-        if(m_uses <= 0)
-        {
-            Destroy(this.gameObject);
-        }
+        m_uses--;        
     }
 
     public void Gain(int quantity)
